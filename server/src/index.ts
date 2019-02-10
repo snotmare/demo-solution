@@ -1,6 +1,6 @@
 import { Test } from './test';
 
-foo('hi2');
+foo('hi');
 
 function foo(value: string) {
 	new Test();
