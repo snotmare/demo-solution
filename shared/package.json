@@ -1,19 +1,14 @@
 {
-	"name": "demo",
+	"name": "shared",
 	"version": "1.0.0",
 	"description": "",
-	"main": "index.js",
+	"main": "dist/shared.module.js",
 	"scripts": {
 		"build": "tsc --watch",
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "ts-node --project tsconfig.json src/index.ts "
+		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"author": "",
 	"license": "ISC",
-	"dependencies": {
-		"express": "^4.16.4",
-		"shared": "file:../shared"
-	},
 	"devDependencies": {
 		"@types/node": "^10.12.24",
 		"nodemon": "^1.18.10",
