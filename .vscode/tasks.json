@@ -9,6 +9,13 @@
 			"script": "build",
 			"path": "shared/",
 			"problemMatcher": []
+		},
+		{
+			"label": "start server",
+			"type": "npm",
+			"script": "start",
+			"path": "server/",
+			"problemMatcher": []
 		}
 	]
 }

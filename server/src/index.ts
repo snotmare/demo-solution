@@ -1,8 +1,13 @@
-import { Test } from './test';
+import * as express from 'express';
 
-foo('hi');
+let app = express();
 
-function foo(value: string) {
-	new Test();
-	console.log(value);
-}
+app.get('/', function (request: express.Request, response: express.Response) {
+	response.send('Hello World!');
+	// main(req, res);
+
+});
+
+app.listen(3000, () => {
+	console.log('Magic happens on port 3000!');
+});
