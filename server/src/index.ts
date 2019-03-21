@@ -1,5 +1,5 @@
 import * as express from 'express';
-import { WeatherRouter } from './weather';
+import { WeatherRouter } from './weather-router';
 
 let app = express();
 
