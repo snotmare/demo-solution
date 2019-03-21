@@ -1,13 +1,16 @@
-import * as express from 'express';
+import { Express, Request, Response } from 'express';
+import { ObjectUtils } from 'shared';
 // import * as weather from 'weather-js';
 
-let app = express();
+export class WeatherRouter {
+	constructor(app: Express) {
+		app.get('/weather', (request: Request, response: Response) => {
+			
+			response.send('Getting weather ' + ObjectUtils.isEmpty(undefined));
+		});
+	}
+}
 
-app.get('/', function (request: express.Request, response: express.Response) {
-	response.send('Hello World');
-	// main(req, res);
-
-});
 
 // async function main(req, res) {
 // 	try{
@@ -44,7 +47,3 @@ app.get('/', function (request: express.Request, response: express.Response) {
 
 // 	res.send('There was a problem ' + err.message);	
 // }
-
-app.listen(3000, function () {
-	console.log('Magic happens on port 3000!');
-});

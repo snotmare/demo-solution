@@ -1,8 +1,9 @@
 {
 	"name": "shared",
 	"version": "1.0.0",
-	"description": "",
+	"description": "shared demo project",
 	"main": "dist/shared.module.js",
+	"types": "dist/shared.module.d.ts",
 	"scripts": {
 		"build": "tsc --watch",
 		"test": "echo \"Error: no test specified\" && exit 1"

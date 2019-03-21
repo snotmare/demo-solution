@@ -1,5 +1,5 @@
 export class ObjectUtils {
-	isEmpty(value: any) {
+	static isEmpty(value: any) {
 		return value === undefined
 			|| value === null;
 	}

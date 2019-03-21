@@ -11,6 +11,13 @@
 			"problemMatcher": []
 		},
 		{
+			"label": "build server",
+			"type": "npm",
+			"script": "build",
+			"path": "server/",
+			"problemMatcher": []
+		},
+		{
 			"label": "start server",
 			"type": "npm",
 			"script": "start",
