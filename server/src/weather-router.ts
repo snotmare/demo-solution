@@ -1,11 +1,12 @@
 import { Express, Request, Response } from 'express';
-import { ObjectUtils } from 'shared';
+import { ObjectUtils, WeatherSearch, StringUtils } from 'shared';
 import * as weather from 'weather-js';
 import * as bodyParser from 'body-parser';
 
 export class WeatherRouter {
 	constructor(app: Express) {
 		app.use(bodyParser.json());
+		
 
 		app.post('/weather', (request: Request, response: Response) => {
 			this.getWeather(request, response);
@@ -13,21 +14,24 @@ export class WeatherRouter {
 	}
 
 	private getWeather(request: Request, response: Response) {
-		if (ObjectUtils.isEmpty(request.body.city) || request.body.city.trim() === '') {
+		let search = <WeatherSearch>request.body;
+
+		if (StringUtils.isEmpty(search.city)) {
 			throw new Error('City is required.');
 		}
 
-		if(ObjectUtils.isEmpty(request.body.state) || request.body.state.trim() === '') {
+		if(StringUtils.isEmpty(search.state)) {
 			throw new Error('State is required.');
 		}
 
 		let degType: string;
-		if(ObjectUtils.isEmpty(request.body.degreeType) || request.body.degreeType.trim() === '') {
+
+		if(StringUtils.isEmpty(search.degreeType)) {
 			throw new Error('Degree Type is required.');
-		} else {
-			if (request.body.degreeType !== 'F' && request.body.degreeType !== 'C') {
-				throw new Error('Degree Type is invalid.');
-			}
+		}
+
+		if (request.body.degreeType !== 'F' && request.body.degreeType !== 'C') {
+			throw new Error('Degree Type is invalid.');
 		}
 
 		let cityState = request.body.city + ', ' + request.body.state;

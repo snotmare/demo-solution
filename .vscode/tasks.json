@@ -4,6 +4,23 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
+			"label": "init all",
+			"dependsOn": [
+				"init shared",
+				"init server",
+				"init client"
+			],
+			"problemMatcher": []
+		},
+		{
+			"label": "start all",
+			"dependsOn": [
+				"build shared",
+				"start server"
+			],
+			"problemMatcher": []
+		},
+		{
 			"label": "build shared",
 			"type": "npm",
 			"script": "build",
@@ -22,6 +39,33 @@
 			"type": "npm",
 			"script": "start",
 			"path": "server/",
+			"problemMatcher": []
+		},
+		{
+			"label": "init shared",
+			"type": "npm",
+			"script": "init",
+			"path": "shared/",
+			"problemMatcher": []
+		},
+		{
+			"label": "init server",
+			"type": "npm",
+			"script": "init",
+			"path": "server/",
+			"problemMatcher": []
+		},
+		{
+			"label": "init client",
+			"type": "npm",
+			"script": "init",
+			"path": "client/",
+			"problemMatcher": []
+		},
+		{
+			"type": "npm",
+			"script": "start",
+			"path": "client/",
 			"problemMatcher": []
 		}
 	]

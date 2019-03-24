@@ -1,7 +1,9 @@
 import * as express from 'express';
 import { WeatherRouter } from './weather-router';
+import * as cors from 'cors';
 
 let app = express();
+app.use(cors());
 
 app.get('/', function (request: express.Request, response: express.Response) {
 	response.send('Hello World!');

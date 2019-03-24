@@ -6,6 +6,7 @@
 	"types": "dist/shared.module.d.ts",
 	"scripts": {
 		"build": "tsc --watch",
+		"init": "npm i",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"author": "",

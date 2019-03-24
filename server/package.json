@@ -5,6 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"build": "tsc --watch",
+		"init": "npm i",
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "nodemon --exec .\\node_modules\\.bin\\ts-node -- .\\src\\index.ts"
 	},
@@ -12,16 +13,19 @@
 	"license": "ISC",
 	"dependencies": {
 		"body-parser": "^1.18.3",
+		"cors": "^2.8.5",
 		"express": "^4.16.4",
 		"shared": "file:../shared",
 		"weather-js": "^2.0.0"
 	},
 	"devDependencies": {
+		"@types/cors": "^2.8.4",
 		"@types/express": "^4.16.1",
 		"@types/node": "^10.12.24",
 		"nodemon": "^1.18.10",
 		"ts-node": "^8.0.2",
 		"tslint": "^5.12.1",
-		"typescript": "^3.3.3"
+		"typescript": "^3.3.4000",
+		"typescript-tslint-plugin": "^0.3.1"
 	}
 }
