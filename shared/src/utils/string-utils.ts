@@ -1,9 +1,8 @@
-import { ObjectUtils } from "./object-utils";
+import { ObjectUtils } from './object-utils';
 
 export class StringUtils {
 	static isEmpty(value: string): boolean {
-		return ObjectUtils.isEmpty(value)
-			|| value.trim.length === 0;
+		return ObjectUtils.isEmpty(value) || value.trim().length === 0;
 	}
 
 	static isNotEmpty(value: string): boolean {
