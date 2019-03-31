@@ -1,6 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { WeatherService } from 'src/app/services/weather-service';
-import { Observable } from 'rxjs';
+import { Component, Input, OnInit } from '@angular/core';
 import { Weather } from 'shared';
 
 @Component({

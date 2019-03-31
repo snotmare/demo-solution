@@ -1,19 +1,52 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from 'src/app/services/weather-service';
-import { Observable } from 'rxjs';
-import { Weather } from 'shared';
+import { Weather, WeatherSearch, Degree, State, DataUtils } from 'shared';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-weather-search',
-  templateUrl: './weather-search.component.html',
-  styleUrls: ['./weather-search.component.scss']
+	selector: 'app-weather-search',
+	templateUrl: './weather-search.component.html',
+	styleUrls: ['./weather-search.component.scss']
 })
 export class WeatherSearchComponent implements OnInit {
-	weather$: Observable<Weather>;
+	weather: Weather;
+	form: FormGroup;
 
-	constructor(private weatherService: WeatherService) { }
+	constructor(private weatherService: WeatherService) {
+		this.form = new FormGroup({
+			'city': new FormControl(undefined, [Validators.required]),
+			'state': new FormControl(undefined, [Validators.required])
+		});
+	}
 
 	ngOnInit() {
-		this.weather$ = this.weatherService.getLocation();
+		let search: WeatherSearch = {
+			city: 'Lincoln',
+			state: 'NE',
+			degreeType: Degree.FAHRENHEIT
+		};
+
+		this.form.reset(search);
+		this.search();
+	}
+
+	onSubmit() {
+		this.search();
+	}
+
+	get states(): State[] {
+		return DataUtils.states;
+	}
+	
+	private async search() {
+		if(this.form.invalid) {
+			return;
+		}
+
+		this.weather = await this.weatherService.getLocation({
+			city: this.form.value['city'],
+			state: this.form.value['state'],
+			degreeType: Degree.FAHRENHEIT
+		}).toPromise();
 	}
 }

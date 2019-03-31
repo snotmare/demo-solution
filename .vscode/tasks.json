@@ -16,7 +16,8 @@
 			"label": "start all",
 			"dependsOn": [
 				"build shared",
-				"start server"
+				"start server",
+				"start client"
 			],
 			"problemMatcher": []
 		},
@@ -39,6 +40,13 @@
 			"type": "npm",
 			"script": "start",
 			"path": "server/",
+			"problemMatcher": []
+		},
+		{
+			"label": "start client",
+			"type": "npm",
+			"script": "start",
+			"path": "client/",
 			"problemMatcher": []
 		},
 		{

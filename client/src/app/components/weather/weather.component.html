@@ -1,8 +1,5 @@
-<div class="weather" *ngIf="weather">
-	<h3>{{weather.location.name}}</h3>
-	<img class="current-image" [src]="weather.current.imageUrl"/>
-	<b>Current: </b>{{weather.current.temperature}}
-	<br/>
-	<b>Feels Like: </b>{{weather.current.feelslike}}
-	
-</div>
+<h3>{{weather.location.name}}</h3>
+<img class="current-image" [src]="weather.current.imageUrl"/>
+<b>Current:</b> {{weather.current.temperature}}
+<br/>
+<b>Feels Like:</b> {{weather.current.feelslike}}

@@ -4,6 +4,6 @@ import { Location } from './location';
 
 export interface Weather {
 	current: Current;
-	forecasts: Forecast[];
+	forecast: Forecast[];
 	location: Location;
 }

@@ -12,12 +12,14 @@ import { AppComponent } from './app.component';
 import { WeatherService } from './services/weather-service';
 import { WeatherComponent } from './components/weather/weather.component';
 import { WeatherSearchComponent } from './components/weather-search/weather-search.component';
+import { ForecastComponent } from './components/forecast/forecast.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WeatherComponent,
-    WeatherSearchComponent
+    WeatherSearchComponent,
+    ForecastComponent
   ],
   imports: [
 	BrowserModule,

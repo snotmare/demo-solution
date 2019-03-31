@@ -1,6 +1,6 @@
 import * as bodyParser from 'body-parser';
 import { Express, Request, Response } from 'express';
-import { StringUtils, WeatherSearch, ObjectUtils } from 'shared';
+import { StringUtils, WeatherSearch, ObjectUtils, Degree } from 'shared';
 import * as weather from 'weather-js';
 
 export class WeatherRouter {
@@ -12,7 +12,11 @@ export class WeatherRouter {
 		app.use(bodyParser.json());
 
 		app.post('/weather', (request: Request, response: Response) => {
-			this.getWeather(request, response);
+			try {
+				this.getWeather(request, response);
+			} catch(error) {
+				response.status(400).send(`${error}`);
+			}
 		});
 	}
 	
@@ -27,13 +31,11 @@ export class WeatherRouter {
 			throw new Error('State is required.');
 		}
 
-		let degType: string;
-
 		if(StringUtils.isEmpty(search.degreeType)) {
 			throw new Error('Degree Type is required.');
 		}
 
-		if (search.degreeType !== 'F' && search.degreeType !== 'C') {
+		if(!Object.values(Degree).includes(search.degreeType)) {
 			throw new Error('Degree Type is invalid.');
 		}
 
@@ -46,7 +48,7 @@ export class WeatherRouter {
 		}
 		
 		// TODO Feel free to promisify. Then use if else and response.json one time, and get rid of instance var.
-		weather.find({search: cityState, degreeType: degType}, function(err: Error, result: any) {
+		weather.find({search: cityState, degreeType: search.degreeType}, (err: Error, result: any) => {
 			if(err) {
 				console.log(err);
 				response.send('There was a problem getting the weather.');
