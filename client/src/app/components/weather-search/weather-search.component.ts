@@ -43,10 +43,9 @@ export class WeatherSearchComponent implements OnInit {
 			return;
 		}
 
-		this.weather = await this.weatherService.getLocation({
-			city: this.form.value['city'],
-			state: this.form.value['state'],
-			degreeType: Degree.FAHRENHEIT
-		}).toPromise();
+		let search = <WeatherSearch>this.form.value;
+		search.degreeType = Degree.FAHRENHEIT
+
+		this.weather = await this.weatherService.getLocation(search).toPromise();
 	}
 }
